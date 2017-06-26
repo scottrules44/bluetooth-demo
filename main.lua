@@ -4,6 +4,15 @@ local widget = require "widget"
 local bluetoothList
 local bluetoothTable = {}
 local deviceTable = {}
+-- note location is required for bluetooth on android 6.0+ 
+
+--request premission for 6.0+
+native.showPopup( "requestAppPermission", {
+   appPermission = "Location", urgency = "Critical", listener= function ( e )
+   	
+   end} )
+--
+
 local bg = display.newRect( display.contentCenterX, display.contentCenterY, display.actualContentWidth, display.actualContentHeight )
 bg:setFillColor( .5,0,1 )
 local title = display.newText( "Bluetooth Plugin", display.contentCenterX, 60, native.systemFontBold, 30 )
